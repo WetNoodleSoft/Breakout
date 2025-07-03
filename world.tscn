@@ -1,3 +1,67 @@
-[gd_scene format=3 uid="uid://nf7xrd8116ep"]
+[gd_scene load_steps=10 format=3 uid="uid://cll8ydy8xfd1w"]
+
+[ext_resource type="Texture2D" uid="uid://banlgfwo6yafe" path="res://Sprites/breakout-ball.png" id="1_fj7yv"]
+[ext_resource type="Script" uid="uid://dmapbs1fquecv" path="res://Scripts/paddle-controller.gd" id="2_aqk2v"]
+[ext_resource type="Texture2D" uid="uid://cwbywu0v5qxj8" path="res://Sprites/breakout-paddle.png" id="2_tlwt5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aqk2v"]
+radius = 16.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_036b0"]
+radius = 13.5
+height = 162.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dwbse"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pkg7o"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gbfbk"]
+normal = Vector2(-1, 0)
+distance = -1600.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ioo17"]
+distance = -900.0
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2(817, 730)
+gravity_scale = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_aqk2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture = ExtResource("1_fj7yv")
+
+[node name="Paddle" type="CharacterBody2D" parent="."]
+position = Vector2(820, 862)
+script = ExtResource("2_aqk2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_036b0")
+one_way_collision_margin = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Paddle"]
+texture = ExtResource("2_tlwt5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="TopBoundary" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_dwbse")
+debug_color = Color(0.874111, 0.180922, 0.725675, 0.42)
+
+[node name="LeftBoundary" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_pkg7o")
+debug_color = Color(0.874111, 0.180922, 0.725675, 0.42)
+
+[node name="RightBoundary" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_gbfbk")
+debug_color = Color(0.874111, 0.180922, 0.725675, 0.42)
+
+[node name="BotBoundary" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_ioo17")
+debug_color = Color(0.874111, 0.180922, 0.725675, 0.42)
