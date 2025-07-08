@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwbywu0v5qxj8"
-path="res://.godot/imported/breakout-paddle.png-e2d70dd95b0b7d0575b63efa59cb5b35.ctex"
+path="res://.godot/imported/breakout-paddle.png-008903196a3d97d58d9c18bdaa5aeb8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/breakout-paddle.png"
-dest_files=["res://.godot/imported/breakout-paddle.png-e2d70dd95b0b7d0575b63efa59cb5b35.ctex"]
+source_file="res://Assets/Sprites/breakout-paddle.png"
+dest_files=["res://.godot/imported/breakout-paddle.png-008903196a3d97d58d9c18bdaa5aeb8e.ctex"]
 
 [params]
 

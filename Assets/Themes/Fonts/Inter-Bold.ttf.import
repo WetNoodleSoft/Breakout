@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://ct2fyhivqoqgx"
-path="res://.godot/imported/InterVariable.ttf-1fdddf2c36cb8152166c76947a47d864.fontdata"
+uid="uid://c4nsc7miiwtc5"
+path="res://.godot/imported/Inter-Bold.ttf-ef7219b9daca2f6019d12f76987027a1.fontdata"
 
 [deps]
 
-source_file="res://Resources/InterVariable.ttf"
-dest_files=["res://.godot/imported/InterVariable.ttf-1fdddf2c36cb8152166c76947a47d864.fontdata"]
+source_file="res://Assets/Themes/Fonts/Inter-Bold.ttf"
+dest_files=["res://.godot/imported/Inter-Bold.ttf-ef7219b9daca2f6019d12f76987027a1.fontdata"]
 
 [params]
 

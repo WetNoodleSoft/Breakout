@@ -1,20 +1,21 @@
-[gd_scene load_steps=19 format=4 uid="uid://cll8ydy8xfd1w"]
+[gd_scene load_steps=20 format=4 uid="uid://cll8ydy8xfd1w"]
 
-[ext_resource type="Script" uid="uid://v5awlqnwpdwi" path="res://Scripts/canvas_layer.gd" id="1_5v1tr"]
-[ext_resource type="Script" uid="uid://h2yjoxtqhkm3" path="res://Scripts/ball.gd" id="1_fo5ed"]
-[ext_resource type="FontFile" uid="uid://ct2fyhivqoqgx" path="res://Resources/InterVariable.ttf" id="2_0fj1v"]
-[ext_resource type="Texture2D" uid="uid://banlgfwo6yafe" path="res://Sprites/breakout-ball.png" id="2_5ukr8"]
-[ext_resource type="FontFile" uid="uid://c4nsc7miiwtc5" path="res://Resources/Inter-Bold.ttf" id="3_ikia7"]
-[ext_resource type="Script" uid="uid://dmapbs1fquecv" path="res://Scripts/paddle-controller.gd" id="3_o06y3"]
-[ext_resource type="Texture2D" uid="uid://cwbywu0v5qxj8" path="res://Sprites/breakout-paddle.png" id="4_k7acu"]
-[ext_resource type="Texture2D" uid="uid://b8yogmqoanxf" path="res://Sprites/brick.png" id="5_5v1tr"]
-[ext_resource type="Script" uid="uid://dnuno8f7dm8y1" path="res://Scripts/tile_map_layer.gd" id="6_5ukr8"]
+[ext_resource type="Texture2D" uid="uid://b8yogmqoanxf" path="res://Assets/Sprites/brick.png" id="1_kn06e"]
+[ext_resource type="Script" uid="uid://dnuno8f7dm8y1" path="res://Scripts/tile_map_layer.gd" id="2_7yo87"]
+[ext_resource type="Script" uid="uid://v5awlqnwpdwi" path="res://Scripts/canvas_layer.gd" id="3_ti1bm"]
+[ext_resource type="Theme" uid="uid://dtncw1ttqmqhf" path="res://Assets/Themes/labels.theme" id="4_op4cu"]
+[ext_resource type="FontFile" uid="uid://ct2fyhivqoqgx" path="res://Assets/Themes/Fonts/InterVariable.ttf" id="5_8l3nt"]
+[ext_resource type="FontFile" uid="uid://c4nsc7miiwtc5" path="res://Assets/Themes/Fonts/Inter-Bold.ttf" id="6_kwl8l"]
+[ext_resource type="Script" uid="uid://h2yjoxtqhkm3" path="res://Scripts/ball.gd" id="7_xiqgv"]
+[ext_resource type="Texture2D" uid="uid://banlgfwo6yafe" path="res://Assets/Sprites/breakout-ball.png" id="8_waglr"]
+[ext_resource type="Script" uid="uid://dmapbs1fquecv" path="res://Scripts/paddle-controller.gd" id="9_rwt1y"]
+[ext_resource type="Texture2D" uid="uid://cwbywu0v5qxj8" path="res://Assets/Sprites/breakout-paddle.png" id="10_mvfa8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fo5ed"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_036b0"]
 resource_name = "Brick"
-texture = ExtResource("5_5v1tr")
+texture = ExtResource("1_kn06e")
 margins = Vector2i(4, 4)
 texture_region_size = Vector2i(44, 18)
 0:0/0 = 0
@@ -53,37 +54,60 @@ tile_map_data = PackedByteArray("AAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAA
 tile_set = SubResource("TileSet_tlwt5")
 occlusion_enabled = false
 navigation_enabled = false
-script = ExtResource("6_5ukr8")
+script = ExtResource("2_7yo87")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("1_5v1tr")
+script = ExtResource("3_ti1bm")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+[node name="ScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
 offset_left = 10.0
 offset_top = 850.0
-offset_right = 160.0
+offset_right = 210.0
 offset_bottom = 900.0
-theme_override_fonts/normal_font = ExtResource("2_0fj1v")
-theme_override_fonts/bold_font = ExtResource("3_ikia7")
+theme = ExtResource("4_op4cu")
+theme_override_fonts/normal_font = ExtResource("5_8l3nt")
+theme_override_fonts/bold_font = ExtResource("6_kwl8l")
 theme_override_font_sizes/normal_font_size = 36
 theme_override_font_sizes/bold_font_size = 36
-text = "0"
+text = "SCORE: 0"
+
+[node name="LivesLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 810.0
+offset_right = 210.0
+offset_bottom = 860.0
+theme = ExtResource("4_op4cu")
+theme_override_fonts/normal_font = ExtResource("5_8l3nt")
+theme_override_fonts/bold_font = ExtResource("6_kwl8l")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
+text = "LIVES: 3"
+
+[node name="StartLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 400.0
+offset_top = 450.0
+offset_right = 1200.0
+offset_bottom = 550.0
+theme = ExtResource("4_op4cu")
+theme_override_font_sizes/normal_font_size = 60
+text = "PRESS (SPACE) TO BEGIN"
+horizontal_alignment = 1
 
 [node name="Ball" type="CharacterBody2D" parent="."]
 position = Vector2(800, 380)
 motion_mode = 1
-script = ExtResource("1_fo5ed")
+script = ExtResource("7_xiqgv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 shape = SubResource("CircleShape2D_aqk2v")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
-texture = ExtResource("2_5ukr8")
+texture = ExtResource("8_waglr")
 
 [node name="Paddle" type="CharacterBody2D" parent="."]
 position = Vector2(800, 860)
 motion_mode = 1
-script = ExtResource("3_o06y3")
+script = ExtResource("9_rwt1y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
 rotation = 1.5708
@@ -91,7 +115,7 @@ shape = SubResource("CapsuleShape2D_036b0")
 one_way_collision_margin = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Paddle"]
-texture = ExtResource("4_k7acu")
+texture = ExtResource("10_mvfa8")
 
 [node name="WorldBoundary" type="StaticBody2D" parent="."]
 
@@ -107,6 +131,8 @@ debug_color = Color(0.874111, 0.180922, 0.725675, 0.42)
 shape = SubResource("WorldBoundaryShape2D_gbfbk")
 debug_color = Color(0.874111, 0.180922, 0.725675, 0.42)
 
-[node name="BotBoundary" type="CollisionShape2D" parent="WorldBoundary"]
+[node name="Bottom" type="StaticBody2D" parent="."]
+
+[node name="BotBoundary" type="CollisionShape2D" parent="Bottom"]
 shape = SubResource("WorldBoundaryShape2D_ioo17")
 debug_color = Color(0.874111, 0.180922, 0.725675, 0.42)
