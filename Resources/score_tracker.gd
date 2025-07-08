@@ -1,18 +1,15 @@
-extends Resource
+extends Node2D
 
 var high_score: Array = []
+var new_score: Dictionary = {}
 
-
-func new_score(name: String, score: int) -> void:
+func record_score(name: String, score: int) -> void:
+	print(high_score)
+	new_score.clear()
+	new_score[name] = score
 	if high_score.size() > 4:
-		high_score.append({name = score})
-		var lowest_score = high_score[0]
-		var i = 0
-		for record in high_score:
-			if record < lowest_score:
-				lowest_score = record
-			
-	high_score.append({name = score})
+		high_score.append(new_score)
+		high_score.sort()
+		high_score.resize(high_score.size() - 1)
 		pass
-	
-	pass
+	high_score.append(new_score)

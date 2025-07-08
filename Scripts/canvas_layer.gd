@@ -38,5 +38,6 @@ func _on_start() -> void:
 
 func _game_end() -> void:
 	self.emit_signal("game_over")
-	ScoreTracker.new_score(score)
-	get_tree().reload_current_scene()
+	var player_name: String = "Ryan"
+	ScoreTracker.record_score(player_name, score)
+	get_tree().call_deferred("reload_current_scene")

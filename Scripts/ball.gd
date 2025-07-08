@@ -10,7 +10,8 @@ signal start
 @onready var start_position = Vector2(800,380)
 @onready var ball_state = BallStates.PASSIVE
 @onready var initial_angle: float = 0
-@onready var down_vector = Vector2(0,250)
+
+@export var down_vector = Vector2(0,250)
 
 
 func _ready() -> void:
@@ -50,7 +51,6 @@ func _respawn(initial: bool) -> void:
 
 func _set_launch_angle() -> void:
 	initial_angle = deg_to_rad(randf_range(-30,30))
-	down_vector = Vector2(0,250)
 	velocity = Vector2(
 	down_vector.x * cos(initial_angle) - down_vector.y * sin(initial_angle),
 	down_vector.x * sin(initial_angle) + down_vector.y * cos(initial_angle))
