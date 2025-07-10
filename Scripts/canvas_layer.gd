@@ -4,6 +4,7 @@ signal game_over
 
 @onready var ball: CharacterBody2D = $"../Ball"
 @onready var tile_map_layer: TileMapLayer = $"../TileMapLayer"
+@onready var start_countdown: RichTextLabel = $StartCountdown
 @onready var score_label: RichTextLabel = $ScoreLabel
 @onready var lives_label: RichTextLabel = $LivesLabel
 @onready var start_label: RichTextLabel = $StartLabel
@@ -14,11 +15,14 @@ signal game_over
 @onready var lives: int = 3
 @onready var high_scores: Array = []
 @onready var score_list: String
+@onready var timer: Timer = $Timer
+
 
 func _ready() -> void:
 	tile_map_layer.brick_destroyed.connect(_on_brick_destroyed)
 	ball.respawn.connect(_on_respawn)
 	ball.start.connect(_on_start)
+	start_countdown.visible = false
 	high_scores = ScoreTracker.get_scores()
 	print(high_scores)
 	for entry in high_scores:
@@ -31,6 +35,18 @@ func _ready() -> void:
 
 func _process(_delta) -> void:
 	score_label.text = ("SCORE: " + str(score))
+
+
+func start_timer() -> void:
+	start_countdown.visible = true
+	var time_remaining: int = 3
+	while time_remaining > 0:
+		print(time_remaining)
+		start_countdown.text = str(time_remaining)
+		timer.start(0.7)
+		await timer.timeout
+		time_remaining -= 1
+	start_countdown.visible = false
 
 
 func _on_brick_destroyed() -> void:
@@ -49,7 +65,7 @@ func _on_respawn() -> void:
 func _on_start() -> void:
 	start_label.visible = false
 	hs_panel.visible = false
-	ball.visible = true
+	ball.visible = true	
 
 
 func _game_end() -> void:

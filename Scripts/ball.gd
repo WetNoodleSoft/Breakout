@@ -7,16 +7,16 @@ signal start
 @onready var tile_map_layer: TileMapLayer = $"../TileMapLayer"
 @onready var paddle: CharacterBody2D = $"../Paddle"
 @onready var bottom: StaticBody2D = $"../Bottom"
-@onready var start_position = Vector2(800,380)
+@onready var start_position = Vector2(800,400)
 @onready var ball_state = BallStates.PASSIVE
 @onready var initial_angle: float = 0
+@onready var canvas_layer: CanvasLayer = $"../CanvasLayer"
 
 @export var down_vector = Vector2(0,250)
 
 
 func _ready() -> void:
 	var initial: bool = true
-	_respawn(initial)
 	_respawn(initial)
 
 
@@ -42,6 +42,7 @@ func _physics_process(delta: float) -> void:
 
 func _respawn(initial: bool) -> void:
 	self.position = start_position
+	paddle.position.x = 800
 	ball_state = BallStates.PASSIVE
 	if initial:
 		pass
@@ -64,5 +65,6 @@ func _get_input() -> void:
 			if Input.is_action_just_released("Start"):
 				self.emit_signal("start")
 				_set_launch_angle()
+				await canvas_layer.start_timer()
 				ball_state = BallStates.ACTIVE
 				
