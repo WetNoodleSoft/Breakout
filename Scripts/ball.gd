@@ -61,7 +61,8 @@ func _get_input() -> void:
 		1:
 			pass
 		0:
-			if Input.is_action_pressed("Start"):
-				ball_state = BallStates.ACTIVE
-				_set_launch_angle()
+			if Input.is_action_just_released("Start"):
 				self.emit_signal("start")
+				_set_launch_angle()
+				ball_state = BallStates.ACTIVE
+				

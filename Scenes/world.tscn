@@ -85,16 +85,62 @@ text = "LIVES: 3"
 
 [node name="StartLabel" type="RichTextLabel" parent="CanvasLayer"]
 offset_left = 400.0
-offset_top = 450.0
+offset_top = 650.0
 offset_right = 1200.0
-offset_bottom = 550.0
+offset_bottom = 750.0
 theme = ExtResource("4_op4cu")
 theme_override_font_sizes/normal_font_size = 60
 text = "PRESS (SPACE) TO BEGIN"
 horizontal_alignment = 1
 
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -150.0
+offset_right = 125.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+split_offset = -100
+drag_area_highlight_in_editor = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HighScoresLabel" type="RichTextLabel" parent="CanvasLayer/PanelContainer/VSplitContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("4_op4cu")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
+bbcode_enabled = true
+text = "[b]High Scores[/b]"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PanelContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HSListLabel" type="RichTextLabel" parent="CanvasLayer/PanelContainer/VSplitContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_op4cu")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
+text = "0"
+horizontal_alignment = 1
+
 [node name="Ball" type="CharacterBody2D" parent="."]
-position = Vector2(800, 380)
+position = Vector2(800, 300)
 motion_mode = 1
 script = ExtResource("7_xiqgv")
 down_vector = Vector2(0, 1500)

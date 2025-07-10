@@ -20,8 +20,6 @@ func _physics_process(delta: float) -> void:
 	accel = (target_speed - velocity.x)
 	velocity.x += ramp * accel * delta
 	move_and_collide(velocity)
-	if position.y != 860:
-		print(position.y)
 	position.y = 860
 
 

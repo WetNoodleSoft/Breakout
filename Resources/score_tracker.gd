@@ -1,15 +1,14 @@
 extends Node2D
 
-var high_score: Array = []
-var new_score: Dictionary = {}
+var high_scores: Array = []
 
-func record_score(name: String, score: int) -> void:
-	print(high_score)
-	new_score.clear()
-	new_score[name] = score
-	if high_score.size() > 4:
-		high_score.append(new_score)
-		high_score.sort()
-		high_score.resize(high_score.size() - 1)
-		pass
-	high_score.append(new_score)
+func record_score(score: int) -> void:
+	high_scores.append(score)
+	high_scores.sort()
+	high_scores.reverse()
+	if high_scores.size() > 5:
+		high_scores.resize(high_scores.size() - 1)
+
+
+func get_scores() -> Array:
+	return high_scores
