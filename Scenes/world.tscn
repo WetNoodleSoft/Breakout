@@ -20,6 +20,7 @@ margins = Vector2i(2, 2)
 texture_region_size = Vector2i(76, 31)
 0:0/next_alternative_id = 2
 0:0/0 = 0
+0:0/0/modulate = Color(1, 0.52549, 0.207843, 1)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-38, -15.5, 38, -15.5, 38, 15.5, -38, 15.5)
 
 [sub_resource type="TileSet" id="TileSet_tlwt5"]
@@ -46,7 +47,7 @@ normal = Vector2(-1, 0)
 distance = -1600.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ioo17"]
-distance = -900.0
+distance = -880.0
 
 [node name="World" type="Node2D"]
 
